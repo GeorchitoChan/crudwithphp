@@ -1,0 +1,34 @@
+# 📦 Dependencias de Composer
+/vendor/
+composer.lock
+
+# 🚀 Archivos de entorno y configuración sensible
+.env
+*.env.local
+*.env.*.local
+
+# ⚙️ Configuración del servidor
+/public/.htaccess
+
+# 🗑 Archivos temporales y caché
+/tmp/
+/cache/
+logs/
+*.log
+
+# 🛠 Configuración de IDEs y entornos de desarrollo
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# 🚧 Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# 🔒 Claves y credenciales (Si usas SSH, evita subirlas)
+id_rsa
+id_rsa.pub
+
+# 📂 Subidas de usuarios (Si hay una carpeta `uploads/`)
+/public/uploads/

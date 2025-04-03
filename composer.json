@@ -1,0 +1,19 @@
+{
+    "name": "georchito-chan/sherzer",
+    "description": "Permite guardar en base de datos los registros de alumnos y su nivel.",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Src\\": "src/",
+            "Core\\": "core/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jorge Chan",
+            "email": "jorgeluis.chanchan@gmail.com"
+        }
+    ],
+    "require": {}
+}
