@@ -9,6 +9,7 @@
         }
 
         public function dispatch($url) {
+            //var_dump($url);
             if (array_key_exists($url, $this->routes)) {
                 $controller = "Src\\Controllers\\" . $this->routes[$url]['controller'];
                 $method = $this->routes[$url]['method'];
