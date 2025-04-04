@@ -8,7 +8,7 @@ composer.lock
 *.env.*.local
 
 # ⚙️ Configuración del servidor
-/public/.htaccess
+# /public/.htaccess
 
 # 🗑 Archivos temporales y caché
 /tmp/

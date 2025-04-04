@@ -12,4 +12,10 @@
             $users = $userModel->getUsers();
             $this->view("home", ["title" => $title, "users" => $users]);
         }
+
+        public function dashboard() {
+            $title = "Dashboard";
+
+            $this->view("dashboard", ["title" => $title]);
+        }
     }

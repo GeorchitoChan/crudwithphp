@@ -6,7 +6,13 @@
 
     class User extends Conexion {
         public function getUsers() {
-            $smtp = $this->db->query("SELECT * FROM users");
-            return $smtp->fetchAll(PDO::FETCH_ASSOC);
+            $stmt = $this->db->query("SELECT * FROM users");
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+
+        public function getUserByEmail($email) {
+            $stmt = $this->db->prepare("SELECT * FROM users WHERE email = :email LIMIT 1");
+            $stmt->execute(['email' => $email]);
+            return $stmt->fetch(PDO::FETCH_ASSOC);
         }
     }

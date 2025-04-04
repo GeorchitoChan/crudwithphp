@@ -1,0 +1,14 @@
+# Habilitar la reescritura de URLs
+<IfModule mod_rewrite.c>
+    Options -Multiviews
+    RewriteEngine On
+
+    # Establecer la raíz del proyecto (en caso de que no esté en la raíz del servidor)
+    RewriteBase /sherzer/public
+
+    # Redirigir todo a index.php si no es un archivo o directorio existente
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+
+</IfModule>
