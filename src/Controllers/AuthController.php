@@ -8,11 +8,18 @@
     class AuthController extends Controller {
         public function login() {
             $title = "Iniciar Sesión";
-            $this->view("login", ["title" => $title]);
+
+            $csrf_token = Auth::generateCSRFToken();
+
+            $this->view("login", ["title" => $title, "csrf_token" => $csrf_token]);
         }
 
         public function authenticate() {
             if ($_SERVER['REQUEST_METHOD'] == "POST") {
+                if (!isset($_POST['csrf_token']) || !Auth::validateCSRFToken($_POST['csrf_token'])) {
+                    die("CSRF token inválido.");
+                }
+
                 $email = $_POST["email"] ?? "";
                 $password = $_POST["password"] ?? "";
 

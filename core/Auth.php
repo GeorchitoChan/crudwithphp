@@ -27,4 +27,25 @@
             self::starSession();
             return $_SESSION['user'] ?? null;
         }
+
+        // Protección contra CSRF (Cross-Site Request Forgery)
+        public static function generateCSRFToken() {
+            self::starSession();
+
+            // Generar y almacenar el token CSRF en la sesión
+            if (empty($_SESSION['csrf_token'])) {
+                $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+            }
+            return $_SESSION['csrf_token']; 
+        }
+
+        public static function getCSRFToken() {
+            self::starSession();
+            return $_SESSION['csrf_token'] ?? '';
+        }
+
+        public static function validateCSRFToken($token) {
+            self::starSession();
+            return isset($_SESSION['csrf_token']) && hash_equals($_SESSION['csrf_token'], $token);
+        }
     }

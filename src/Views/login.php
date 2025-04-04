@@ -13,6 +13,7 @@
                 <?php endif; ?>
 
                 <form method="POST" action="/sherzer/public/authenticate">
+                    <input type="hidden" class="form-control" name="csrf_token" value="<?= htmlspecialchars($csrf_token); ?>" >
                     <div class="form-group mb-3">
                         <label for="email">Correo:</label>
                         <input type="email" class="form-control" id="email" name="email" placeholder="Ingrese su Correo">
