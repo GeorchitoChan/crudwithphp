@@ -20,6 +20,8 @@
                     die("CSRF token inválido.");
                 }
 
+                Auth::limitLoginAttempts();
+
                 $email = $_POST["email"] ?? "";
                 $password = $_POST["password"] ?? "";
 
@@ -27,10 +29,12 @@
                 $user = $userModel->getUserByEmail($email);
 
                 if ($user && password_verify($password, $user["password"])) {
+                    Auth::resetLoginAttempts();
                     Auth::login($user);
                     header("Location: /sherzer/public/dashboard");
                     exit();
                 } else {
+                    Auth::recordFailedLogin();
                     $this->view("login", ["title" => "Iniciar Sesión", "error" => "Credenciales incorrectas"]);
                 }
             }
