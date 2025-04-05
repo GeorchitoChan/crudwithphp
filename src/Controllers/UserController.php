@@ -6,6 +6,15 @@
     use Src\Models\User;
 
     class UserController extends Controller {
+        public function __construct() {
+            // Verificamos si el usuario está autenticado antes de ejecutar cualquier acción
+            if (!Auth::isLoggedIn()) {
+                // Si no está loggeado, redirigir a la página de login
+                header("Location: /sherzer/public/login");
+                exit();
+            }
+        }
+
         public function index() {
             $title = "Usuarios";
             $userModel = new User();
