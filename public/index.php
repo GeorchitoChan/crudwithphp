@@ -21,7 +21,7 @@
 
     $url = '/' . ltrim($_GET['url'] ?? '', '/');
 
-    Auth::starSession();
+    Auth::startSession();
 
     if ($url === "/dashboard" && !Auth::isLoggedIn()) {
         header("Location: /sherzer/public/login");

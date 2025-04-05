@@ -4,6 +4,12 @@
     class Auth {
         public static function startSession() {
             if (session_status() == PHP_SESSION_NONE) {
+                // 🏴‍☠️ Protección contra fijación de sesión
+                ini_set("session.use_strict_mode", 1);
+                ini_set("session.cookie_httponly", 1);
+                ini_set("session.cookie_secure", 1);
+                ini_set("session.use_only_cookies", 1);
+
                 session_start();
 
                 // 🔐 Protege contra secuestro de sesión
@@ -22,12 +28,6 @@
                     session_destroy();
                     die("Posible secuestro de sesión detectado.");
                 }
-
-                // 🏴‍☠️ Protección contra fijación de sesión
-                ini_set("session.use_strict_mode", 1);
-                ini_set("session.cookie_httponly", 1);
-                ini_set("session.cookie_secure", 1);
-                ini_set("session.use_only_cookies", 1);
             }
         }
 
